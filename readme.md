@@ -9,7 +9,7 @@ Unlike traditional Webpack aliases, this plugin enables module resolution for re
 
 ## Installation
 
-Install the plugin via npm or yarn:
+Install the plugin via npm or yarn or pnpm:
 
 ```bash
 npm install import-map-webpack-plugin --save-dev
@@ -19,6 +19,12 @@ or
 
 ```bash
 yarn add import-map-webpack-plugin --dev
+```
+
+or
+
+```bash
+pnpm add import-map-webpack-plugin --dev
 ```
 
 ## Usage
