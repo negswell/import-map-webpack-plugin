@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/negswell/import-map-webpack-plugin#readme",
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
     "build": "npx tsc",
     "preversion": "npm run build",
     "postversion": "git push --follow-tags"
