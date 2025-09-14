@@ -11,6 +11,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/negswell/import-map-webpack-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/negswell/import-map-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/negswell/import-map-webpack-plugin#readme",
   "scripts": {
     "test": "vitest",
     "build": "npx tsc",
@@ -19,7 +27,7 @@
   },
   "keywords": [],
   "author": "Aditya Negi",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.9.2",
     "vitest": "^3.2.4",
