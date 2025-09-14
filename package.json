@@ -1,0 +1,28 @@
+{
+  "name": "import-map-webpack-plugin",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A Webpack plugin for managing import maps and aliasing module paths.",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "build": "npx tsc",
+    "preversion": "npm run build",
+    "postversion": "git push --follow-tags"
+  },
+  "keywords": [],
+  "author": "Aditya Negi",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "webpack": "^5.101.3"
+  }
+}
