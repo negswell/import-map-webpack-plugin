@@ -33,7 +33,9 @@
     "javascript",
     "esm",
     "typescript",
-    "remote-alias"
+    "remote-alias",
+    "nextjs",
+    "next-plugin"
   ],
   "author": "Aditya Negi",
   "license": "MIT",

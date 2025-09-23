@@ -1,15 +1,22 @@
-The **Import Map Webpack Plugin** is a Webpack plugin designed to imitate an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for your modules.
+# Import Map Webpack Plugin
 
-Unlike traditional Webpack aliases, this plugin enables module resolution for remote urls at the bundler level, making it possible to alias remote URLs directly,something that Webpack does not support natively.
+[![npm version](https://img.shields.io/npm/v/import-map-webpack-plugin.svg)](https://www.npmjs.com/package/import-map-webpack-plugin)
+[![npm downloads](https://img.shields.io/npm/dm/import-map-webpack-plugin.svg)](https://www.npmjs.com/package/import-map-webpack-plugin)
+[![license](https://img.shields.io/github/license/negswell/import-map-webpack-plugin.svg)](LICENSE)
 
-## Features
+The **Import Map Webpack Plugin** is a Webpack plugin that mimics an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for your modules.  
 
-- Automatically handles module resolution.
-- Supports custom mappings for external libraries.
+Unlike traditional Webpack aliases, this plugin allows resolution of **remote URLs** at the bundler level — enabling you to alias modules from CDNs or other remote sources directly. This fills a gap since Webpack does not support import maps natively.
 
-## Installation
+## ✨ Features
 
-Install the plugin via npm or yarn or pnpm:
+- Resolve modules using an **import-map–like configuration**.  
+- Seamlessly alias **remote URLs (CDNs, external scripts, etc.)**.  
+- Supports custom mappings for local and external libraries.  
+
+## 📦 Installation
+
+Install with the package manager of your choice:
 
 ```bash
 npm install import-map-webpack-plugin --save-dev
@@ -24,14 +31,17 @@ yarn add import-map-webpack-plugin --dev
 or
 
 ```bash
-pnpm add import-map-webpack-plugin --dev
+pnpm add import-map-webpack-plugin -D
 ```
 
-## Usage
+## 🚀 Usage
+
+### Webpack Example
 
 Add the plugin to your Webpack configuration:
 
 ```javascript
+// webpack.config.js
 import ImportMapPlugin from "import-map-webpack-plugin";
 
 export default {
@@ -53,20 +63,70 @@ Now instead of
 import { useState } from "https://cdn.skypack.dev/react";
 ```
 
-you can now do 
+You can simply do:
 
 ```javascript
 import { useState } from "react";
 ```
+---
+### Next.js Example 
 
+You can configure the plugin in `next.config.ts`:
+
+```typescript
+// next.config.ts
+import type { NextConfig } from "next";
+import ImportMapPlugin from "import-map-webpack-plugin";
+
+const nextConfig: NextConfig = {
+  webpack: (config, { isServer }) => {
+    config.plugins.push(
+      new ImportMapPlugin({
+        aliases: {
+          react: "https://cdn.skypack.dev/react",
+          "react-dom": "https://cdn.skypack.dev/react-dom",
+        },
+      })
+    );
+    return config;
+  },
+};
+
+export default nextConfig;
+```
+
+Now you can safely import remote modules with aliases in your Next.js pages/components:
+
+```javascript
+import { useState } from "react";
+
+export default function Home() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+---
 ### Options
 
 - `aliases` (object): Custom mapping for module paths.
+  
+```javascript
+{
+  aliases: {
+    lodash: "https://cdn.skypack.dev/lodash-es",
+  }
+}
+```
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request on [GitHub](https://github.com/negswell/import-map-webpack-plugin).
 
-## License
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
